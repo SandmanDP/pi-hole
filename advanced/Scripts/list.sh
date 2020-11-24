@@ -14,6 +14,7 @@ piholeDir=/etc/"${basename}"
 gravityDBfile="${piholeDir}/gravity.db"
 
 reload=false
+listChange=true
 addmode=true
 verbose=true
 wildcard=false
@@ -139,6 +140,10 @@ AddDomain() {
         if [[ "${verbose}" == true ]]; then
             echo -e "  ${INFO} ${1} already exists in ${requestedListname}, no need to add!"
         fi
+      elif [[ "${listChange}" == false ]]; then
+        if [[ "${verbose}" == true ]]; then
+            echo -e "  ${CROSS} ${1} already exists in ${existingListname} and is not being moved!"
+        fi
       else
         existingListname="$(GetListnameFromTypeId "${existingTypeId}")"
         sqlite3 "${gravityDBfile}" "UPDATE domainlist SET type = ${typeId} WHERE domain='${domain}';"
@@ -253,6 +258,7 @@ while (( "$#" )); do
         "-nr"| "--noreload"  ) reload=false;;
         "-d" | "--delmode"   ) addmode=false;;
         "-q" | "--quiet"     ) verbose=false;;
+        "-nx"| "--nochange"  ) listChange=false;;
         "-h" | "--help"      ) helpFunc;;
         "-l" | "--list"      ) Displaylist;;
         "--nuke"             ) NukeList;;
