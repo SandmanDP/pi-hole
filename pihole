@@ -374,7 +374,7 @@ updateCheckFunc() {
 tunnelDetectFunc() {
   output=$(python3 "${PI_HOLE_SCRIPT_DIR}"/tunneldetect.py 2>&1)
   if [[ ! -z "${output}" ]]; then
-    "${PI_HOLE_SCRIPT_DIR}"/list.sh -nx regex -c "DNS tunneling detected!" -vd ${output}
+    "${PI_HOLE_SCRIPT_DIR}"/list.sh -nx regex -c "DNS tunneling detected" -vd ${output}
   fi
 }
 
