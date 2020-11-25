@@ -373,7 +373,7 @@ updateCheckFunc() {
 
 tunnelDetectFunc() {
   echo "Hello!"
-  output=$((python3 "${PI_HOLE_SCRIPT_DIR}"/tunneldetect.py) 2> &1)
+  output=$(python3 "${PI_HOLE_SCRIPT_DIR}"/tunneldetect.py 2> &1)
   echo "${output}"
   # if <output from Python script>
   #   "${PI_HOLE_SCRIPT_DIR}"/list.sh -nx regex <output>
