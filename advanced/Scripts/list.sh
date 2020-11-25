@@ -109,6 +109,13 @@ ValidateDomain() {
     domaincount=$((domaincount+1))
 }
 
+ValidateAllDomains() {
+    while (( "$#" )); do
+        ValidateDomain "${1}"
+        shift
+    done
+}
+
 ProcessDomainList() {
     for dom in "${domList[@]}"; do
         # Format domain into regex filter if requested
@@ -261,6 +268,7 @@ while (( "$#" )); do
         "-nx"| "--nochange"  ) listChange=false;;
         "-h" | "--help"      ) helpFunc;;
         "-l" | "--list"      ) Displaylist;;
+        "-vd"| "--validate"  ) ValidateAllDomains "${@:2}"; break;;
         "--nuke"             ) NukeList;;
         "--web"              ) web=true;;
         "--comment"          ) GetComment "${2}"; shift;;

@@ -379,7 +379,7 @@ tunnelDetectFunc() {
     echo "Empty!"
   else
     echo "Not empty!"
-    "${PI_HOLE_SCRIPT_DIR}"/list.sh -nx regex "${output}"
+    "${PI_HOLE_SCRIPT_DIR}"/list.sh -nx regex -vd ${output}
   fi
 }
 
