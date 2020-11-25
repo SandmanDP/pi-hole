@@ -271,7 +271,7 @@ while (( "$#" )); do
         "-vd"| "--validate"  ) ValidateAllDomains "${@:2}"; break;;
         "--nuke"             ) NukeList;;
         "--web"              ) web=true;;
-        "--comment"          ) GetComment "${2}"; shift;;
+        "-c" | "--comment"   ) GetComment "${2}"; shift;;
         *                    ) ValidateDomain "${1}";;
     esac
     shift

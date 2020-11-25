@@ -37,4 +37,8 @@ for line in data[:-12].decode("utf-8").split('\n'):
     process_domain(['.'.join(addr_elements[-2:]), *reversed(addr_elements[:-2])], int(timestamp_str), [], domains)
 
 
-sys.stderr.write(' '.join(domains.keys()))
+def regex_convert(domain):
+    return r'(\.|^)' + r'\.'.join(domain.split('.')) + r'$'
+
+
+sys.stderr.write(' '.join([regex_convert(domain) for domain in domains.keys()]))
