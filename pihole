@@ -371,6 +371,15 @@ updateCheckFunc() {
   exit 0
 }
 
+tunnelDetectFunc() {
+  echo "Hello!"
+  output=$((python3 "${PI_HOLE_SCRIPT_DIR}"/tunneldetect.py) 2> &1)
+  echo "${output}"
+  # if <output from Python script>
+  #   "${PI_HOLE_SCRIPT_DIR}"/list.sh -nx regex <output>
+  # fi
+}
+
 helpFunc() {
   echo "Usage: pihole [options]
 Example: 'pihole -w -h'
@@ -468,6 +477,7 @@ case "${1}" in
   "checkout"                    ) piholeCheckoutFunc "$@";;
   "tricorder"                   ) tricorderFunc;;
   "updatechecker"               ) updateCheckFunc "$@";;
+  "tunneldetect"                ) tunnelDetectFunc;;
   "arpflush"                    ) arpFunc "$@";;
   *                             ) helpFunc;;
 esac
