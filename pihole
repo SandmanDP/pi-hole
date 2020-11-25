@@ -376,10 +376,10 @@ tunnelDetectFunc() {
   output=$(python3 "${PI_HOLE_SCRIPT_DIR}"/tunneldetect.py 2>&1)
   echo "${output}"
   if [[ -z "${output}" ]]; then
-    echo "Not empty!"
-    # "${PI_HOLE_SCRIPT_DIR}"/list.sh -nx regex "${output}"
-  else
     echo "Empty!"
+  else
+    echo "Not empty!"
+    "${PI_HOLE_SCRIPT_DIR}"/list.sh -nx regex "${output}"
   fi
 }
 

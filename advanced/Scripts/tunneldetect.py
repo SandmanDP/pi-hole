@@ -1,4 +1,4 @@
 import sys
 
 
-sys.stderr.write('World!!')
+sys.stderr.write('google.com blah.net')
