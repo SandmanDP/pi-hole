@@ -416,6 +416,7 @@ Options:
                         Add '-h' for more info on version usage
   uninstall           Uninstall Pi-hole from your system
   status              Display the running status of Pi-hole subsystems
+  tunneldetect        Scan for DNS tunneling traffic and blacklist tunneling domains
   enable              Enable Pi-hole subsystems
   disable             Disable Pi-hole subsystems
                         Add '-h' for more info on disable usage
